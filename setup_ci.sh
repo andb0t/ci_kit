@@ -25,8 +25,13 @@ fi
 
 # copy pipeline files
 if [[ "$GIT_PROVIDER" == "GITLAB" ]]; then
-  yml_file="gitlab-ci.yml"
-  cp "$KIT_ROOT/$yml_file" "$REP_ROOT/.$yml_file"
+  source_yml_file="gitlab-ci.yml"
+  target_yml_file=".gitlab-ci.yml"
+  cp "$KIT_ROOT/$source_yml_file" "$REP_ROOT/.$target_yml_file"
+elif [[ "$GIT_PROVIDER" == "GITHUB" ]]; then
+  source_yml_file="travis.yml"
+  target_yml_file=".travis.yml"
+  cp "$KIT_ROOT/$source_yml_file" "$REP_ROOT/.$target_yml_file"
 else
   echo "Not implemented, yet! Please contribute!"
 fi
@@ -37,7 +42,7 @@ if [[ "$IS_SUBMODULE" == "Y" ]]; then
 else
   SCRIPT_PATH="."
 fi
-sed -i "s#CI_KIT_PATH#$SCRIPT_PATH#g" ".$yml_file"
+sed -i "s#CI_KIT_PATH#$SCRIPT_PATH#g" "$target_yml_file"
 
 # copy scipts
 if [[ "$IS_SUBMODULE" == "N" ]]; then
