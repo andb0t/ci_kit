@@ -9,13 +9,14 @@ The included scripts check
 * code format
 * file content
 * customizable blacklist
+A subset of them is called by the default pipelines. Pick and chose!
 
 
 ## Installation
 There are two modes of installation:
 1. add `ci_kit` as submodule.
 
-    This is the recommended way of installation because it makes udpates easy and avoids duplication of code if you use `ci_kit` in several projects. If you need customizations, fork this repo and add your fork as submodule.
+    This is the recommended way of installation because it makes udpates easy and avoids duplication of code if you use `ci_kit` in several projects. If you need customizations, fork this repo and add your fork as submodule. `[THIS_REPO_URL]` has to use HTTPS, not SSH.
     ```bash
     git submodule add [THIS_REPO_URL]
     ```
@@ -29,7 +30,7 @@ There are two modes of installation:
 ### CI steps
 To install a basic pipeline file, calling some basic scripts to check the sanity of your code, execute e.g.
 ```bash
-[YOUR_CI_KIT_PATH]/setup_ci.sh GITLAB  # if you're hosting on gitlab, check the script for other options
+[YOUR_CI_KIT_PATH]/setup_ci.sh GITLAB  # other options are GITHUB, AZUREDEVOPS, BITBUCKET
 ```
 
 ### Git hooks
