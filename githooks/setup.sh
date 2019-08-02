@@ -14,12 +14,12 @@ else
 fi
 
 # get git directory
-ROOT=$(git rev-parse --show-toplevel)
-KIT_ROOT_PATH="$( cd "$(dirname "$0")" || exit; pwd -P )"/..
+REP_ROOT=$(git rev-parse --show-toplevel)
+KIT_ROOT="$( cd "$(dirname "$0")" || exit; pwd -P )"/..
 
 # fill array with content of githooks folder
 # shellcheck disable=SC2207
-FILES=($(ls "$KIT_ROOT_PATH"/githooks))
+FILES=($(ls "$KIT_ROOT"/githooks))
 # remove install file from files to be copied
 thisfile=$(basename "$0")
 FILES=("${FILES[@]/$thisfile}")
@@ -31,13 +31,13 @@ if [[ $TASK == "$INSTALL" ]]; then
     if [ -z "$i" ]; then
       continue
     fi
-    if [ -f "$ROOT/.git/hooks/$i" ]; then
+    if [ -f "$REP_ROOT/.git/hooks/$i" ]; then
       echo "WARNING: File .git/hooks/$i already exists! Overwriting previous version..."
     else
       echo "Installing hook $i ..."
     fi
-    cp "$KIT_ROOT_PATH/githooks/$i" "$ROOT/.git/hooks/$i"
-    chmod +x "$ROOT/.git/hooks/$i"
+    cp "$KIT_ROOT/githooks/$i" "$REP_ROOT/.git/hooks/$i"
+    chmod +x "$REP_ROOT/.git/hooks/$i"
   done
 elif [[ $TASK == "$REMOVE" ]]; then
   for i in "${FILES[@]}"
@@ -45,12 +45,12 @@ elif [[ $TASK == "$REMOVE" ]]; then
     if [ -z "$i" ]; then
       continue
     fi
-    if [ -f "$ROOT/.git/hooks/$i" ]; then
+    if [ -f "$REP_ROOT/.git/hooks/$i" ]; then
       echo "Removing hook $i ..."
     else
       echo "WARNING: .git/hooks/$i does not exist! Skip removal..."
       continue
     fi
-    rm "$ROOT/.git/hooks/$i"
+    rm "$REP_ROOT/.git/hooks/$i"
   done
 fi

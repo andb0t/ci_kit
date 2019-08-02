@@ -11,11 +11,13 @@ else
 fi
 
 # get git directory
-ROOT=$(git rev-parse --show-toplevel)
-KIT_ROOT_PATH="$( cd "$(dirname "$0")" || exit; pwd -P )"/..
+REP_ROOT=$(git rev-parse --show-toplevel)
+KIT_ROOT="$( cd "$(dirname "$0")" || exit; pwd -P )"/..
+IS_SUBMODULE="$(diff -q "$REP_ROOT" "$KIT_ROOT")"
 
-echo "ROOT         : $ROOT"
-echo "KIT_ROOT_PATH: $KIT_ROOT_PATH"
+echo "REP_ROOT:     $REP_ROOT"
+echo "KIT_ROOT:     $KIT_ROOT"
+echo "IS_SUBMODULE: $IS_SUBMODULE"
 
 exit
 
@@ -23,6 +25,6 @@ exit
 if [[ "$GIT_PROVIDER" -eq "GITLAB" ]]; then
   yml_file="gitlab-ci.yml"
   echo "Installing $yml_file"
-  cp "$KIT_ROOT_PATH/$yml_file" "$ROOT/.$yml_file"
-  cp -r "$KIT_ROOT_PATH/ci_tests" "$ROOT/.gitlab-ci.d"
+  cp "$KIT_ROOT/$yml_file" "$REP_ROOT/.$yml_file"
+  cp -r "$KIT_ROOT/ci_tests" "$REP_ROOT/.gitlab-ci.d"
 fi
