@@ -18,17 +18,19 @@ There are two modes of installation:
     This is the recommended way of installation because it makes udpates easy and avoids duplication of code if you use `ci_kit` in several projects. If you need customizations, fork this repo and add your fork as submodule.
     ```bash
     git submodule add [THIS_REPO_URL]
-    # then call the setup.sh scripts once ...
     ```
 2. clone `ci_kit` to any path on your machine `[YOUR_CI_KIT_PATH]`
 
     Using this option, you will be able to chose and select more, which scripts you need which you don't. Copying them to your repo is made easy with the provided `setup.sh` scripts.
     ```bash
     git clone [THIS_REPO_URL]
-    # then call the setup.sh scripts every time you want the newest version ...
     ```
 
 ### CI steps
+To install a basic pipeline file, calling some basic scripts to check the sanity of your code, execute e.g.
+```bash
+[YOUR_CI_KIT_PATH]/setup_ci.sh GITLAB  # if you're hosting on gitlab, check the script for other options
+```
 
 ### Git hooks
 To allow an instantaneous sanity check of the code you are about to commit, use git hooks. They are code snippets triggering on git events, such as committing or pushing. To install the hooks, call
