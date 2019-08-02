@@ -11,6 +11,11 @@ The included scripts check
 * customizable blacklist
 A subset of them is called by the default pipelines. Pick and chose!
 
+Supporting CI templates for
+- [x] GITLAB
+- [x] GITHUB
+- [ ] BITBUCKET
+- [ ] AZUREDEVOPS
 
 ## Installation
 There are two modes of installation:
