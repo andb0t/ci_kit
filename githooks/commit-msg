@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# export VERBOSE_GITHOOKS=1  # uncomment this for success messages
+
+# execute all scripts belonging to this git hook
+exit_status=0
+for i in $(dirname "$0")/*commit_msg*.sh
+do
+  bash "$i"
+  exit_status=$(($? ? 1 : exit_status))
+done
+
+exit $exit_status

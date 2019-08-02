@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# export VERBOSE_GITHOOKS=1  # uncomment this for success messages
+
+# first stash all not staged changes
+STASH_NAME="pre-commit-$(date +%s)"
+git stash save -q --keep-index "$STASH_NAME"
+
+# execute all scripts belonging to this git hook
+exit_status=0
+for i in $(dirname "$0")/*pre_commit*.sh
+do
+  bash "$i" "$GIT_INDEX_FILE"
+  exit_status=$(($? ? 1 : exit_status))
+done
+
+# restore stashed changes
+stash_number=$(git stash list | grep "$STASH_NAME" | cut -d':' -f1)
+git stash pop -q "$stash_number"
+
+# exit with determined result
+exit $exit_status
