@@ -1,0 +1,26 @@
+stages:
+  - test
+
+test:general:format:
+  stage: test
+  image: alpine:3.7
+  before_script:
+    - apk update
+    - apk add git
+    - apk add bash
+  script:
+    - bash .githooks/check_pre_commit_CRLF.sh
+    - bash .githooks/check_pre_commit_jupyter.sh
+    - bash .githooks/check_pre_commit_new_line_at_EOF.sh
+    - bash .githooks/check_pre_commit_whitespace.sh
+
+test:general:shellcheck:
+  stage: test
+  only:
+    refs: ["master", "develop"]
+  image: ubuntu:18.04
+  before_script:
+    - apt-get update
+    - apt-get install shellcheck
+  script:
+    - bash .gitlab-ci.d/run_shellcheck.sh
