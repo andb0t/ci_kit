@@ -18,6 +18,7 @@ ROOT=$(git rev-parse --show-toplevel)
 KIT_ROOT_PATH="$( cd "$(dirname "$0")" || exit; pwd -P )"/..
 
 # fill array with content of githooks folder
+# shellcheck disable=SC2207
 FILES=($(ls "$KIT_ROOT_PATH"/githooks))
 # remove install file from files to be copied
 thisfile=$(basename "$0")
