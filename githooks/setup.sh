@@ -15,11 +15,11 @@ fi
 
 # get git directory
 REP_ROOT=$(git rev-parse --show-toplevel)
-KIT_ROOT="$( cd "$(dirname "$0")" || exit; pwd -P )"/..
+KIT_ROOT="$( cd "$(dirname "$0")" || exit; pwd -P )"
 
 # fill array with content of githooks folder
 # shellcheck disable=SC2207
-FILES=($(ls "$KIT_ROOT"/githooks))
+FILES=($(ls "$KIT_ROOT/.."/githooks))
 # remove install file from files to be copied
 thisfile=$(basename "$0")
 FILES=("${FILES[@]/$thisfile}")
@@ -36,7 +36,7 @@ if [[ $TASK == "$INSTALL" ]]; then
     else
       echo "Installing hook $i ..."
     fi
-    cp "$KIT_ROOT/githooks/$i" "$REP_ROOT/.git/hooks/$i"
+    cp "$KIT_ROOT/../githooks/$i" "$REP_ROOT/.git/hooks/$i"
     chmod +x "$REP_ROOT/.git/hooks/$i"
   done
 elif [[ $TASK == "$REMOVE" ]]; then
