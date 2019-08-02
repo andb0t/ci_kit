@@ -4,6 +4,7 @@ pipelines:
   default:
     - step:
         script:
+          - apt-get install git
           - git submodule update --init --recursive
           - bash CI_KIT_PATHgithooks/check_pre_commit_CRLF.sh
           - bash CI_KIT_PATHgithooks/check_pre_commit_jupyter.sh
@@ -11,5 +12,6 @@ pipelines:
           - bash CI_KIT_PATHgithooks/check_pre_commit_whitespace.sh
     - step:
         script:
+          - apt-get install git
           - git submodule update --init --recursive
           - bash CI_KIT_PATHgit-ci.d/run_shellcheck.sh
