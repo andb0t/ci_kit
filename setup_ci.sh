@@ -32,6 +32,10 @@ elif [[ "$GIT_PROVIDER" == "GITHUB" ]]; then
   source_yml_file="travis.yml"
   target_yml_file=".travis.yml"
   cp "$KIT_ROOT/$source_yml_file" "$REP_ROOT/$target_yml_file"
+elif [[ "$GIT_PROVIDER" == "BITBUCKET" ]]; then
+  source_yml_file="bitbucket-pipelines.yml"
+  target_yml_file="bitbucket-pipelines.yml"
+  cp "$KIT_ROOT/$source_yml_file" "$REP_ROOT/$target_yml_file"
 else
   echo "Not implemented, yet! Please contribute!"
 fi
