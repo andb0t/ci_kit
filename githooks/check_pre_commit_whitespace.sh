@@ -10,7 +10,7 @@ else
 fi
 
 if [[ -z $files ]]; then
-  if [[ ! -z $VERBOSE_GITHOOKS ]]; then
+  if [[ -n $VERBOSE_GITHOOKS ]]; then
     echo "[POLICY] Trailing whitespace test passed"
   fi
 else

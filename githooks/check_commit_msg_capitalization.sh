@@ -6,7 +6,7 @@ regex_pattern='^(\[(\w+(\s+\w+)*)+\]\s)*[A-Z]+.*$'
 
 # enforce start with capital letter or tag
 if [[ $commit_msg =~ $regex_pattern ]]; then
-  if [[ ! -z $VERBOSE_GITHOOKS ]]; then
+  if [[ -n $VERBOSE_GITHOOKS ]]; then
     echo "[POLICY] Capital letter / tag test passed"
   fi
 else

@@ -23,14 +23,14 @@ do
   for blackword in "${BLACKLIST[@]}"
   do
     found=$(grep -n "$blackword" "$file" | cut -d':' -f1)
-    if [ ! -z "$found" ]; then
+    if [ -n "$found" ]; then
       cached+=("$file : $found: \"$blackword\"")
     fi
   done
 done
 
 if [ ${#cached[@]} -eq 0 ]; then
-  if [[ ! -z $VERBOSE_GITHOOKS ]]; then
+  if [[ -n $VERBOSE_GITHOOKS ]]; then
     echo "[POLICY] blacklist check passed"
   fi
 else

@@ -21,7 +21,7 @@ do
 done
 
 if [ ${#cached[@]} -eq 0 ]; then
-  if [[ ! -z $VERBOSE_GITHOOKS ]]; then
+  if [[ -n $VERBOSE_GITHOOKS ]]; then
     echo "[POLICY] CRLF check passed"
   fi
 else
