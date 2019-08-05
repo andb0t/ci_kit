@@ -1,3 +1,6 @@
+# This is an example .gitlab-ci.yml script
+# copied in the root dir of the repo, this will trigger the pipeline on Gitlab
+
 variables:
   GIT_SUBMODULE_STRATEGY: recursive
 

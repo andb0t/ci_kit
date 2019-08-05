@@ -1,3 +1,6 @@
+# This is an example azure-pipelines.yml script
+# copied in the root dir of the repo, this will trigger the pipeline Azure DevOps
+
 trigger:
 - master
 

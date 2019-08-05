@@ -1,3 +1,6 @@
+# This is an example .travis.yml script
+# copied in the root dir of the repo, this will trigger the pipeline on Github
+
 language: bash
 
 script:
