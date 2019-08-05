@@ -25,19 +25,19 @@ fi
 
 # copy pipeline files
 if [[ "$GIT_PROVIDER" == "GITLAB" ]]; then
-  source_yml_file="gitlab-ci.yml"
+  source_yml_file="pipe_cfg/gitlab.yml"
   target_yml_file=".gitlab-ci.yml"
   cp "$KIT_ROOT/$source_yml_file" "$REP_ROOT/$target_yml_file"
 elif [[ "$GIT_PROVIDER" == "GITHUB" ]]; then
-  source_yml_file="travis.yml"
+  source_yml_file="pipe_cfg/github.yml"
   target_yml_file=".travis.yml"
   cp "$KIT_ROOT/$source_yml_file" "$REP_ROOT/$target_yml_file"
 elif [[ "$GIT_PROVIDER" == "BITBUCKET" ]]; then
-  source_yml_file="bitbucket-pipelines.yml"
+  source_yml_file="pipe_cfg/bitbucket.yml"
   target_yml_file="bitbucket-pipelines.yml"
   cp "$KIT_ROOT/$source_yml_file" "$REP_ROOT/$target_yml_file"
 elif [[ "$GIT_PROVIDER" == "AZUREDEVOPS" ]]; then
-  source_yml_file="azure-pipelines.yml"
+  source_yml_file="pipe_cfg/azure.yml"
   target_yml_file="azure-pipelines.yml"
   cp "$KIT_ROOT/$source_yml_file" "$REP_ROOT/$target_yml_file"
 else
