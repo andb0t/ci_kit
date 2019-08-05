@@ -1,8 +1,9 @@
 language: bash
 
 script:
-    - bash CI_KIT_PATHgithooks/check_pre_commit_CRLF.sh
-    - bash CI_KIT_PATHgithooks/check_pre_commit_jupyter.sh
-    - bash CI_KIT_PATHgithooks/check_pre_commit_new_line_at_EOF.sh
-    - bash CI_KIT_PATHgithooks/check_pre_commit_whitespace.sh
-    - bash CI_KIT_PATHgit-ci.d/run_shellcheck.sh
+    - bash CI_KIT_PATHgithooks/check_pre_commit_CRLF.sh &
+    - bash CI_KIT_PATHgithooks/check_pre_commit_jupyter.sh &
+    - bash CI_KIT_PATHgithooks/check_pre_commit_new_line_at_EOF.sh &
+    - bash CI_KIT_PATHgithooks/check_pre_commit_whitespace.sh &
+    - bash CI_KIT_PATHgit-ci.d/run_shellcheck.sh &
+    - wait
