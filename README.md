@@ -25,6 +25,10 @@ There are two modes of installation:
     ```bash
     git submodule add [THIS_REPO_URL]
     ```
+    Make sure fresh clones use the `--recursive` option to check out the subrepo as well:
+    ```bash
+    git clone --recursive [THIS_REPO_URL]
+    ````
 2. clone `ci_kit` to any path on your machine `[YOUR_CI_KIT_PATH]`
 
     Using this option, you will be able to chose and select more, which scripts you need which you don't. Copying them to your repo is made easy with the provided `setup.sh` scripts.
