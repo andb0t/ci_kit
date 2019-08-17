@@ -22,6 +22,8 @@ else
   IS_SUBMODULE="N"
 fi
 
+# copy readmes
+cp -i "$KIT_ROOT"/readmes/*.md "$REP_ROOT/."
 
 # copy pipeline files
 PIPELINE_CFG_DIR="pipe_cfg/"
